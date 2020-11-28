@@ -5,7 +5,7 @@ const morgan = require('morgan');
 const useragent = require('express-useragent');
 
 // Require the http response code
-const HTTPStatus = require('./utils/httpStatus');
+const HTTPStatus = require('./utils/http-status.util');
 
 // Require Routes
 const Routes = require('./routes/index');

@@ -36,7 +36,10 @@ module.exports = {
         type: Sequelize.TEXT
       },
       is_verified: {
-        type: Sequelize.ENUM('0', '1')
+        type: Sequelize.ENUM('true', 'false')
+      },
+      profile_is_complete: {
+        type: Sequelize.ENUM('true', 'false')
       },
       createdAt: {
         allowNull: false,

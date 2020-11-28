@@ -1,9 +1,9 @@
 const Joi = require("joi");
 
-const guestUser = {};
+const guestSchema = {};
 
 // Define the schema
-guestUser.schema = Joi.object({
+guestSchema.schema = Joi.object({
 
   firstName: Joi.string().required(),
   
@@ -14,12 +14,12 @@ guestUser.schema = Joi.object({
 });
 
 // Validate the schema
-guestUser.validate = async (body) => {
+guestSchema.validate = async (body) => {
   try {
-    const result = await guestUser.schema.validateAsync(body);
+    const result = await guestSchema.schema.validateAsync(body);
   } catch (error) {
     throw new Error(error.details[0].message);
   }
 };
 
-module.exports = guestUser;
+module.exports = guestSchema;

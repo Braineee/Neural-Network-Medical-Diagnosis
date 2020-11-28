@@ -14,8 +14,12 @@ module.exports = (sequelize, DataTypes) => {
     gender: DataTypes.ENUM('Male', 'Female'),
     address: DataTypes.TEXT,
     is_verified: {
-      type: DataTypes.ENUM('0', '1'),
-      defaultValue: '0',
+      type: DataTypes.ENUM(true, false),
+      defaultValue: false,
+    },
+    profile_is_complete: {
+      type: DataTypes.ENUM(true, false),
+      defaultValue: false,
     },
   }, {});
   Users.associate = function(models) {

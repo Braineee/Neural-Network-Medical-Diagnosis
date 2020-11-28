@@ -1,6 +1,6 @@
 {
   "development": {
-    "username": "root",
+    "username": "root_",
     "password": null,
     "database": "Diagnosis",
     "host": "127.0.0.1",
