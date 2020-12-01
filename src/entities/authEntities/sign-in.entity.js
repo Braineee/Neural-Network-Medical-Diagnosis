@@ -2,13 +2,11 @@
 const buildMakeSignIn = ({ validate }) => {
   return class makeSignIn {
     constructor(signInData) {
-      //console.log(signInData);
       this._validate = validate;
       this._signInData = signInData;
     }
 
-    async _validate() {
-      console.log(this._signInData);
+    async _validateEntity() {
       await this._validate(this._signInData);
     }
 
@@ -25,7 +23,7 @@ const buildMakeSignIn = ({ validate }) => {
     }
 
     async execute(){
-      await this._validate();
+      await this._validateEntity();
       
       Object.freeze(this._signInData);
 

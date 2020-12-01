@@ -3,7 +3,7 @@ const makeUserDao = ({ userModel }) => {
   const userDao = {
 
     async findByEmail(email) {
-      const result = await userModel.findOne({ where: { email }, attributes: { exclude: ['id', 'password'] } });
+      const result = await userModel.findOne({ where: { email }, attributes: { exclude: ['id'] } });
       return result;
     },
 
