@@ -1,9 +1,9 @@
 const express = require('express');
 const makeCallBack = require('../utils/express-callback.util');
-const guestControllers = require('../controllers/guestControllers');
+const userControllers = require('../controllers/userControllers');
 
 const router = express.Router();
 
-router.post("/register", makeCallBack(guestControllers.registerGuestController));
+router.put("/update/profile", makeCallBack(userControllers.updateUserController));
 
 module.exports = router;

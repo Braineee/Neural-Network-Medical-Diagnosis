@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Users = sequelize.define('Users', {
+  const User = sequelize.define('User', {
     user_uuid: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
@@ -14,16 +14,16 @@ module.exports = (sequelize, DataTypes) => {
     gender: DataTypes.ENUM('Male', 'Female'),
     address: DataTypes.TEXT,
     is_verified: {
-      type: DataTypes.ENUM(true, false),
-      defaultValue: false,
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
     },
     profile_is_complete: {
-      type: DataTypes.ENUM(true, false),
-      defaultValue: false,
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
     },
   }, {});
-  Users.associate = function(models) {
+  User.associate = function(models) {
     // associations can be defined here
   };
-  return Users;
+  return User;
 };

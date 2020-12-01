@@ -5,19 +5,21 @@ const userSchema = {};
 // Define the schema
 userSchema.schema = Joi.object({
 
-  firstName: Joi.string().required(),
+  userUuid: Joi.string().required(),
 
-  lastName: Joi.string().required(),
+  firstname: Joi.string().required(),
   
+  lastname: Joi.string().required(),
+
   email: Joi.string().email({ minDomainSegments: 2 }).required(),
 
   phone: Joi.string().required(),
 
-  age: Joi.number().required(),
+  age: Joi.string().required(),
 
-  gender: Joi.number().required(),
+  gender: Joi.string().required(),
 
-  address: Joi.number().required(),
+  address: Joi.string().required(),
 
 });
 

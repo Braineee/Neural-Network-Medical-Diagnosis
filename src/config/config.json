@@ -1,27 +1,25 @@
 {
   "development": {
-    "username": "root_",
+    "username": "root",
     "password": null,
     "database": "Diagnosis",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "operatorsAliases": false,
-    "port": "8889"
+    "port": "8889",
+    "logging": false
   },
   "test": {
     "username": "root",
     "password": null,
     "database": "Diagnosis_test",
     "host": "127.0.0.1",
-    "dialect": "mysql",
-    "operatorsAliases": false
+    "dialect": "mysql"
   },
   "production": {
     "username": "root",
     "password": null,
     "database": "Diagnosis_production",
     "host": "127.0.0.1",
-    "dialect": "mysql",
-    "operatorsAliases": false
+    "dialect": "mysql"
   }
 }

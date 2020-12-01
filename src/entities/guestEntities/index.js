@@ -1,4 +1,5 @@
 const bcrypt = require('bcryptjs');
+const { v4: uuidv4 } = require('uuid');
 const guestEntity = require('./guest.entity');
 const guestSchema = require('../../schemas/guestSchemas/guest.schema');
 

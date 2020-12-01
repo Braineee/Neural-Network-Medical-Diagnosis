@@ -1,25 +1,25 @@
 const Joi = require("joi");
 
-const guestSchema = {};
+const signInSchema = {};
 
 // Define the schema
-guestSchema.schema = Joi.object({
-
-  firstname: Joi.string().required(),
+signInSchema.schema = Joi.object({
   
   email: Joi.string().email({ minDomainSegments: 2 }).required(),
 
   password: Joi.string().required(),
 
+  remember_me: Joi.bool().required(),
+
 });
 
 // Validate the schema
-guestSchema.validate = async (body) => {
+signInSchema.validate = async (body) => {
   try {
-    const result = await guestSchema.schema.validateAsync(body);
+    const result = await signInSchema.schema.validateAsync(body);
   } catch (error) {
     throw new Error(error.details[0].message);
   }
 };
 
-module.exports = guestSchema;
+module.exports = signInSchema;

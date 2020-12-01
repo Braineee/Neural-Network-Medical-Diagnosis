@@ -1,21 +1,17 @@
-const makeGuestEntity = require('../../entities/guestEntity');
+const makeGuestEntity = require('../../entities/guestEntities');
 
 const makeRegisterGuest = ({ userDao }) => {
 
   const registerGuest = async (guestInfo) => {
     // check the guestInfo
-    const guest = new makeGuestEntity(guestInfo);
+    const guest = await new makeGuestEntity(guestInfo).execute();
 
     // check if guest email exists
-    const emailExists = await userDao.findByEmail({ Email: guest.getEmail() });
+    const emailExists = await userDao.findByEmail(guest.getEmail());
     if (emailExists) throw new Error('Email has been reqistered previously');
 
-    // check if phone number exisit 
-    const phoneExists = await userDao.findByPhone({ Phone: guest.getPhone() });
-    if (phoneExists) throw new Error('Email has been reqistered previously');
-
     // create the new user
-    const createUser = userDao.insert({
+    const createUser = await userDao.insert({
       user_uuid: guest.getUserUuid(),
       first_name: guest.getFirstName(),
       email: guest.getEmail(),
@@ -27,7 +23,7 @@ const makeRegisterGuest = ({ userDao }) => {
     if (!createUser) throw new Error("User was not created.");
 
     // fetch the new user data
-    const newUser = await userDao.findByUuid({ Uuid: guest.getUserUuid });
+    const newUser = await userDao.findByUuid(guest.getUserUuid());
 
     // return the user data
     return newUser;
