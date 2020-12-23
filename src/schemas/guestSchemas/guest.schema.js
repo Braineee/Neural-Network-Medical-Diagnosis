@@ -6,6 +6,8 @@ const guestSchema = {};
 guestSchema.schema = Joi.object({
 
   firstname: Joi.string().required(),
+
+  lastname: Joi.string().required(),
   
   email: Joi.string().email({ minDomainSegments: 2 }).required(),
 

@@ -6,8 +6,7 @@
   "scripts": {
     "test": "NODE_PATH=./ APP_ENV=test jest --coverage  --watch --notify --runInBand --forceExit --silent",
     "start": "node server.js",
-    "dev": "nodemon server.js",
-    "deploy": "pm2 start server.js --name evisit-datacenter"
+    "dev": "nodemon server.js"
   },
   "author": "David Igbigbi",
   "license": "ISC",

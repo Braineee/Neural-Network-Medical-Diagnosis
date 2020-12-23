@@ -14,6 +14,7 @@ const makeRegisterGuest = ({ userDao }) => {
     const createUser = await userDao.insert({
       user_uuid: guest.getUserUuid(),
       first_name: guest.getFirstName(),
+      last_name: guest.getLastName(),
       email: guest.getEmail(),
       password: guest.getPassword(),
       is_verified: guest.isVerified(),

@@ -1,5 +1,5 @@
 const userEntity = require('./user.entity');
-const userSchema = require('../../schemas/userSchemas/user.schema');
+const userSchema = require('../../schemas/userSchemas/update-profile.schema');
 
 async function validate(body) {
   return await userSchema.validate(body);

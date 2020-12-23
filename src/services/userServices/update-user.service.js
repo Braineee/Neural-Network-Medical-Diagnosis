@@ -1,24 +1,29 @@
 const makeUserEntity = require('../../entities/userEntities');
 
-const makeUpdateUser = ({ userDao }) => {
+const makeUpdateUserProfile = ({ userDao }) => {
 
   const updateUser = async (userData) => {
-    // check the user data
-    const user = await new makeUserEntity(userData).execute();
+
+    // define the type of update
+    userData.type = 'profile_update';
 
     // check if user exists
-    const userExisit = await userDao.findByEmail(user.getUserUuid());
+    const userExisit = await userDao.findByEmail(userData.userUuid);
     if (!userExisit) throw new Error('This user those not exists.');
+
+    // check the user data
+    const user = await new makeUserEntity(userExisit, userData).execute();
 
     // update the new user
     const updateUser = await userDao.update({
       user_uuid: user.getUserUuid(),
-      first_name: user.getFirstName(),
-      last_name: user.getLastName(),
-      email: user.getEmail(),
-      phone: user.getPhone(),
-      age: user.getAge(),
-      address: user.getAddress(),
+      first_name: user.updateFirstName(),
+      last_name: user.updateLastName(),
+      email: user.updateEmail(),
+      phone: user.updatePhone(),
+      age: user.updateAge(),
+      address: user.updateAddress(),
+      profile_is_complete: user.updateProfileCompleted()
     });
 
     // check if the user was updated
@@ -35,4 +40,4 @@ const makeUpdateUser = ({ userDao }) => {
   return updateUser;
 }
 
-module.exports = makeUpdateUser;
+module.exports = makeUpdateUserProfile;

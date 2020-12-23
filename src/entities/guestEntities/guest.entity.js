@@ -29,6 +29,10 @@ const buildMakeGuest = ({ getId, validate, encryptPassword }) => {
       return this._guestData.firstname;
     }
 
+    getLastName() {
+      return this._guestData.lastname;
+    }
+
     getEmail() {
       return this._guestData.email;
     }
