@@ -5,7 +5,7 @@ const makeSignInController = ({ signInService, HTTPStatus }) => {
       
       return {
         headers: {'Content-Type': 'application/json', 'Last-Modified': new Date().toUTCString()},
-        statusCode: HTTPStatus.CREATED,
+        statusCode: HTTPStatus.OK,
         body: { message: "Request Successful", error: false,  data}
       }
     } catch (err) {
