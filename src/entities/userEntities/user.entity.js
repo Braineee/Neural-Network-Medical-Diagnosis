@@ -3,12 +3,11 @@ const buildMakeUser = ({ validateProfileUpdate }) => {
   return class makeGuest {
 
     constructor(currentUserData = {}, updatedUserData = {}) {
-
-      console.log(currentUserData, updatedUserData);
-      
       this._validateProfileUpdate = validateProfileUpdate;
       this._updatedUserData = updatedUserData;
       this._currentUserData = currentUserData;
+
+      //console.log(this._currentUserData);
     }
 
     async __validateProfileUpdate() {
@@ -61,43 +60,50 @@ const buildMakeUser = ({ validateProfileUpdate }) => {
     }
 
     updateFirstName() {
+      if (!this._updatedUserData.firstname) return this._currentUserData.first_name;
       if (this._updatedUserData.firstname !== this._currentUserData.first_name) return this._updatedUserData.firstname;
       return this._currentUserData.first_name;
     }
 
     updateLastName() {
+      if (!this._updatedUserData.lastname) return this._currentUserData.last_name;
       if (this._updatedUserData.lastname !== this._currentUserData.last_name) return this._updatedUserData.lastname;
       return this._currentUserData.last_name;
     }
 
     updateEmail() {
+      if (!this._updatedUserData.email) return this._currentUserData.email; 
       if (this._updatedUserData.email !== this._currentUserData.email) return this._updatedUserData.email;
       return this._currentUserData.email;
     }
 
     updatePhone() {
+      if (!this._updatedUserData.phone) this._currentUserData.phone; 
       if (this._updatedUserData.phone !== this._currentUserData.phone) return this._updatedUserData.phone;
       return this._currentUserData.phone;
     }
 
     updateAge() {
+      if (!this._updatedUserData.age) this._currentUserData.age; 
       if (this._updatedUserData.age !== this._currentUserData.age) return this._updatedUserData.age;
       return this._currentUserData.age;
     }
 
     updateGender() {
+      if (!this._updatedUserData.gender) this._currentUserData.gender; 
       if (this._updatedUserData.gender !== this._currentUserData.gender) return this._updatedUserData.gender;
       return this._currentUserData.gender;
     }
 
     updateAddress() {
+      if (!this._updatedUserData.address) this._currentUserData.address; 
       if (this._updatedUserData.address !== this._currentUserData.address) return this._updatedUserData.address;
       return this._currentUserData.address;
     }
 
     updateProfileCompleted() {
-      this._updatedUserData.profile_is_completed = 1;
-      return this._updatedUserData.profile_is_completed;
+      if (this._currentUserData.profile_is_complete === 0) return 1;
+      if (this._currentUserData.profile_is_complete === 1) return 0;
     }
 
     async execute(){

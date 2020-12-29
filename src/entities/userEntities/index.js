@@ -1,10 +1,10 @@
 const userEntity = require('./user.entity');
 const userSchema = require('../../schemas/userSchemas/update-profile.schema');
 
-async function validate(body) {
+async function validateProfileUpdate(body) {
   return await userSchema.validate(body);
 }
 
-const makeUserEntity = userEntity({ validate });
+const makeUserEntity = userEntity({ validateProfileUpdate });
 
 module.exports = makeUserEntity;

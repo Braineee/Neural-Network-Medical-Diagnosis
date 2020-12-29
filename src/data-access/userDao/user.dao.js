@@ -18,14 +18,15 @@ const makeUserDao = ({ userModel }) => {
     },
 
     async insert(userData) {
-      console.log(userData);
       const result = await userModel.create(userData);
       if (result) return true;
       return false;
     },
 
     async update(userData) {
-      return "Not implemented";
+      const update = await userModel.update(userData, { where: { user_uuid: userData.user_uuid } });
+      if (update) return true;
+      return false;
     },
 
     async remove(userData) {

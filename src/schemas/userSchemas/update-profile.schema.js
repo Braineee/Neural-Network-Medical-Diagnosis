@@ -15,6 +15,8 @@ updateProfile.schema = Joi.object({
 
   address: Joi.string().required(),
 
+  type: Joi.string().required(),
+
 });
 
 // Validate the schema

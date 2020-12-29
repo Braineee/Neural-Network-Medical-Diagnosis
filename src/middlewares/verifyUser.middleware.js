@@ -6,10 +6,8 @@ const makeVerifyUserMiddleware = ({ validateUserToken, HTTPStatus }) => {
 
       req.user = user.getUserDetails();
 
-      if (req.body) req.body.user_uuid = user.getUserUuid();
-      if (req.params) req.params.user_uuid = user.getUserUuid();
-
-      console.log(req.body);
+      if (req.body) req.body.userUuid = user.getUserUuid();
+      if (req.params) req.params.userUuid = user.getUserUuid();
 
       next();
 

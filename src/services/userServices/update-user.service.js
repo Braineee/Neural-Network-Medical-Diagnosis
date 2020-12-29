@@ -8,7 +8,7 @@ const makeUpdateUserProfile = ({ userDao }) => {
     userData.type = 'profile_update';
 
     // check if user exists
-    const userExisit = await userDao.findByEmail(userData.userUuid);
+    const userExisit = await userDao.findByUuid(userData.userUuid);
     if (!userExisit) throw new Error('This user those not exists.');
 
     // check the user data
@@ -22,6 +22,7 @@ const makeUpdateUserProfile = ({ userDao }) => {
       email: user.updateEmail(),
       phone: user.updatePhone(),
       age: user.updateAge(),
+      gender: user.updateGender(),
       address: user.updateAddress(),
       profile_is_complete: user.updateProfileCompleted()
     });
