@@ -7,6 +7,16 @@ const makeUserDao = ({ symptomModel }) => {
       return result;
     },
 
+    async findById(symptom_id) {
+      const result = await symptomModel.findOne({ where: { symptom_id }, attributes: { exclude: ['id'] } });
+      return result;
+    },
+
+    async findByName(symptom_name) {
+      const result = await symptomModel.findOne({ where: { symptom_name }, attributes: { exclude: ['id'] } });
+      return result;
+    },
+
     async fetchAll() {
       const result = await symptomModel.findAll({ attributes: { exclude: ['id'] } });
       return result;

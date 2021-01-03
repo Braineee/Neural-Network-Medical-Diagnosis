@@ -1,5 +1,5 @@
 const MakeFetchAllSymptom = ({ symptomDao }) => {
-  const fetchAllSymptom = async (symptomData) => {
+  const fetchAllSymptom = async () => {
 
     // fetch all symptom data
     const allSymptom = await symptomDao.fetchAll();

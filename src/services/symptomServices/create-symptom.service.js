@@ -8,8 +8,12 @@ const MakeCreateSymptom = ({ symptomDao }) => {
     console.log(symptom.getSymptomUuid());
 
     // check if symptom exists
-    const symtpomExists = await symptomDao.findByUuid(symptom.getSymptomUuid());
-    if (symtpomExists) throw new Error('This symptom already exists');
+    const symptomIdExists = await symptomDao.findById(symptom.getSymptomId());
+    const symptomNameExists = await symptomDao.findByName(symptom.getSymptomName());
+
+    if (symptomIdExists) throw new Error('This symptom already exists');
+    if (symptomNameExists) throw new Error('This symptom already exists');
+    
 
     // store the new symptom
     const storeSymptom = await symptomDao.insert({
